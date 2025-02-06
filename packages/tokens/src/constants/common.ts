@@ -344,8 +344,8 @@ export const USDC = {
   ),
   [ChainId.ETHERLINK_TESTNET]: new ERC20Token(
     ChainId.ETHERLINK_TESTNET,
-    '0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a',
-    18,
+    '0x4C2AA252BEe766D3399850569713b55178934849',
+    6,
     'USDC',
     'USD Coin',
   ),
@@ -406,8 +406,8 @@ export const USDT = {
   [ChainId.LINEA]: new ERC20Token(ChainId.LINEA, '0xA219439258ca9da29E9Cc4cE5596924745e12B93', 6, 'USDT', 'Tether USD'),
   [ChainId.ETHERLINK_TESTNET]: new ERC20Token(
     ChainId.ETHERLINK_TESTNET,
-    '0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F',
-    18,
+    '0xf7f007dc8Cb507e25e8b7dbDa600c07FdCF9A75B',
+    6,
     'USDT',
     'Tether USD',
   ),

@@ -48,8 +48,8 @@ export const USDT = {
   [ChainId.BASE_TESTNET]: new ERC20Token(ChainId.BASE_TESTNET, zeroAddress, 6, 'USDT'),
   [ChainId.ETHERLINK_TESTNET]: new ERC20Token(
     ChainId.ETHERLINK_TESTNET,
-    '0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F',
-    18,
+    '0xf7f007dc8Cb507e25e8b7dbDa600c07FdCF9A75B',
+    6,
     'USDT',
   ),
 }
