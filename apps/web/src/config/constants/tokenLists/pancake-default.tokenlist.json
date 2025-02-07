@@ -557,23 +557,23 @@
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0xD21B917D2f4a4a8E3D12892160BFFd8f4cd72d4F",
+      "address": "0xf7f007dc8Cb507e25e8b7dbDa600c07FdCF9A75B",
       "chainId": 128123,
-      "decimals": 18,
+      "decimals": 6,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
     },
     {
       "name": "USD Coin",
       "symbol": "USDC",
-      "address": "0xa7c9092A5D2C3663B7C5F714dbA806d02d62B58a",
+      "address": "0x4C2AA252BEe766D3399850569713b55178934849",
       "chainId": 128123,
-      "decimals": 18,
+      "decimals": 6,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdc.png"
     },
     {
       "name": "Wrapped Ether",
       "symbol": "WETH",
-      "address": "0x8DEF68408Bc96553003094180E5C90d9fe5b88C1",
+      "address": "0x86932ff467A7e055d679F7578A0A4F96Be287861",
       "chainId": 128123,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x8DEF68408Bc96553003094180E5C90d9fe5b88C1.png"
