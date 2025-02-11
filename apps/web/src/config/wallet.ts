@@ -69,9 +69,9 @@ const walletsConfig = ({
         // && metaMaskConnector.ready
       },
       connectorId: ConnectorNames.MetaMask,
-      deepLink: 'https://metamask.app.link/dapp/frontend-fixes-git-deeplink-metamask-camillebzds-projects.vercel.app/',
+      deepLink: 'https://metamask.app.link/dapp/iguanadex.com/',
       qrCode,
-      downloadLink: 'https://metamask.app.link/dapp/iguanadex.com',
+      downloadLink: 'https://metamask.app.link/dapp/iguanadex.com/',
     },
     {
       id: 'BinanceW3W',
