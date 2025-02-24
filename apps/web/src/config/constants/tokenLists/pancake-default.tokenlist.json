@@ -611,6 +611,22 @@
       "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x9121B153bbCF8C23F20eE43b494F08760B91aD64.jpg"
     },
     {
+      "name": "Midas US Treasury Bill Token",
+      "symbol": "mTBILL",
+      "address": "0xDD629E5241CbC5919847783e6C96B2De4754e438",
+      "chainId": 42793,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0xDD629E5241CbC5919847783e6C96B2De4754e438.png"
+    },
+    {
+      "name": "Midas Basis Trading Token",
+      "symbol": "mBASIS",
+      "address": "0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4",
+      "chainId": 42793,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4.png"
+    },
+    {
       "name": "Tether USD",
       "symbol": "USDT",
       "address": "0x2C03058C8AFC06713be23e58D2febC8337dbfE6A",
