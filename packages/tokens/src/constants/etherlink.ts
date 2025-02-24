@@ -35,4 +35,20 @@ export const etherlinkTokens = {
     'https://www.degeneratives.art/',
   ),
   tzpepe: new ERC20Token(ChainId.ETHERLINK, '0x9121B153bbCF8C23F20eE43b494F08760B91aD64', 2, 'tzPEPE', 'TEZOS PEPE'),
+  mtbill: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0xDD629E5241CbC5919847783e6C96B2De4754e438',
+    18,
+    'mTBILL',
+    'Midas US Treasury Bill Token',
+    'https://midas.app/',
+  ),
+  mbasis: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x2247B5A46BB79421a314aB0f0b67fFd11dd37Ee4',
+    18,
+    'mBASIS',
+    'Midas Basis Trading Token',
+    'https://midas.app/',
+  ),
 }
