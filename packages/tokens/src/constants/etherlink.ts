@@ -51,4 +51,12 @@ export const etherlinkTokens = {
     'Midas Basis Trading Token',
     'https://midas.app/',
   ),
+  cndy: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x6b43732a9AE9F8654d496c0A075Aa4Aa43057A0B',
+    18,
+    'CNDY',
+    'Sugarverse',
+    'https://www.sugarverse.io/',
+  ),
 }
