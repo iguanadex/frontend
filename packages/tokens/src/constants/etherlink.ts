@@ -59,4 +59,12 @@ export const etherlinkTokens = {
     'Sugarverse',
     'https://www.sugarverse.io/',
   ),
+  aapl: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x73A53459eE9828618912BC56c7C618ae4d1C75Cc',
+    18,
+    'AAPL',
+    'Apples',
+    '',
+  )
 }
