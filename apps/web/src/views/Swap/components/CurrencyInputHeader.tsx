@@ -16,7 +16,6 @@ import {
 import { useExpertMode } from '@pancakeswap/utils/user'
 import { Swap } from '@pancakeswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
-import InternalLink from 'components/Links'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import RefreshIcon from 'components/Svg/RefreshIcon'
 import { CHAIN_REFRESH_TIME } from 'config/constants/exchange'
@@ -118,9 +117,14 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
                 display="flex"
                 style={{ justifyContent: 'center' }}
               >
-                <InternalLink href="/buy-crypto" data-dd-action-name="Swap buy crypto button">
+                <a
+                  href="https://global.transak.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-dd-action-name="Swap buy crypto button"
+                >
                   <Image src={BuyCryptoIcon} alt="#" style={{ justifyContent: 'center' }} />
-                </InternalLink>
+                </a>
               </TooltipText>
               {buyCryptoTooltipVisible && (!isMobile || mobileTooltipShow) && buyCryptoTooltip}
             </Flex>
