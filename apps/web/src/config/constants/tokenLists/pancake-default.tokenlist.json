@@ -656,7 +656,7 @@
       "address": "0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F",
       "chainId": 42793,
       "decimals": 8,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/wbtc.png"
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0xbFc94CD2B1E55999Cfc7347a9313e88702B83d0F.png"
     },
     {
       "name": "Wrapped BNB",
