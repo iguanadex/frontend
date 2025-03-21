@@ -2,11 +2,13 @@ import { ChainId } from './chainId'
 
 type SubgraphParams = {
   noderealApiKey?: string
+  etherlinkApiKey?: string
 }
 
 const publicSubgraphParams = {
   // Public key for nodereal subgraph endpoint
   noderealApiKey: '19bd2b3f75c24e23bb8a0e9d4f55b271',
+  etherlinkApiKey: '5258cc72624688ae2fcd0c4119e0129c',
 }
 
 export const V3_SUBGRAPHS = getV3Subgraphs(publicSubgraphParams)
@@ -20,7 +22,7 @@ export const STABLESWAP_SUBGRAPHS = {
   [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap-arb',
 }
 
-export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
+export function getV3Subgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphParams) {
   return {
     [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-eth',
     [ChainId.GOERLI]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-goerli',
@@ -44,12 +46,12 @@ export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.ARBITRUM_SEPOLIA]: null,
     [ChainId.BASE_SEPOLIA]: null,
     [ChainId.ETHERLINK_TESTNET]:
-      'https://api.studio.thegraph.com/query/69431/exchange-v3-etherlink-test/version/latest',
-    [ChainId.ETHERLINK]: 'https://api.studio.thegraph.com/query/69431/exchange-v3-etherlink/version/latest',
+      'https://api.studio.thegraph.com/query/107385/exchange-v3-etherlink-test/version/latest',
+    [ChainId.ETHERLINK]: `https://gateway.thegraph.com/api/${etherlinkApiKey}/subgraphs/id/2Av7PEgRn7PtLhGibJYSYuGX1VfLtnfRn4Sw9rgAkAC`,
   } satisfies Record<ChainId, string | null>
 }
 
-export function getV2Subgraphs({ noderealApiKey }: SubgraphParams) {
+export function getV2Subgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphParams) {
   return {
     [ChainId.BSC]: 'https://proxy-worker-api.pancakeswap.com/bsc-exchange',
     [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth',
@@ -61,12 +63,12 @@ export function getV2Subgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.LINEA]: 'https://api.studio.thegraph.com/query/45376/exchange-v2-linea/version/latest',
     [ChainId.BASE]: 'https://api.studio.thegraph.com/query/45376/exchange-v2-base/version/latest',
     [ChainId.OPBNB]: `https://open-platform-ap.nodereal.io/${noderealApiKey}/opbnb-mainnet-graph-query/subgraphs/name/pancakeswap/exchange-v2`,
-    [ChainId.ETHERLINK_TESTNET]: 'https://api.studio.thegraph.com/query/69431/exchange-v2-etl-testnet/version/latest',
-    [ChainId.ETHERLINK]: 'https://api.studio.thegraph.com/query/69431/exchange-v2-etherlink/version/latest',
+    [ChainId.ETHERLINK_TESTNET]: 'https://api.studio.thegraph.com/query/107385/exchange-v2-etl-testnet/version/latest',
+    [ChainId.ETHERLINK]: `https://gateway.thegraph.com/api/${etherlinkApiKey}/subgraphs/id/7vaswWAiGSVk4WKe9KRnGRsrfwSDqS35Cxf5sA67KWWe`,
   }
 }
 
-export function getBlocksSubgraphs({ noderealApiKey }: SubgraphParams) {
+export function getBlocksSubgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphParams) {
   return {
     [ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
     [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks',
@@ -76,7 +78,7 @@ export function getBlocksSubgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.LINEA]: 'https://api.studio.thegraph.com/query/45376/blocks-linea/version/latest',
     [ChainId.BASE]: 'https://api.studio.thegraph.com/query/48211/base-blocks/version/latest',
     [ChainId.OPBNB]: `https://open-platform-ap.nodereal.io/${noderealApiKey}/opbnb-mainnet-graph-query/subgraphs/name/pancakeswap/blocks`,
-    [ChainId.ETHERLINK_TESTNET]: 'https://api.studio.thegraph.com/query/69431/blocks-etherlink-testnet/version/latest',
-    [ChainId.ETHERLINK]: 'https://api.studio.thegraph.com/query/69431/blocks-etherlink/version/latest',
+    [ChainId.ETHERLINK_TESTNET]: 'https://api.studio.thegraph.com/query/107385/blocks-etherlink-testnet/version/latest',
+    [ChainId.ETHERLINK]: `https://gateway.thegraph.com/api/${etherlinkApiKey}/subgraphs/id/8SDVxT5MJd7YaFR8pmSsQ5Lxb49oGzDMRt3T8RQWepUq`,
   }
 }
