@@ -1,5 +1,6 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { ArrowBackIcon, ArrowForwardIcon, Box, SortArrowIcon, Text } from '@pancakeswap/uikit'
+import { ArrowBackIcon, ArrowForwardIcon, Box, SortArrowIcon, Text, TokenLogo } from '@pancakeswap/uikit'
+import { ASSET_CDN } from 'config/constants/endpoints'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import NextLink from 'next/link'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
@@ -22,18 +23,18 @@ const ResponsiveGrid = styled.div`
   grid-gap: 1em;
   align-items: center;
 
-  grid-template-columns: 20px 3.5fr repeat(3, 1fr);
+  grid-template-columns: 20px 3.5fr repeat(4, 1fr);
   padding: 0 24px;
   @media screen and (max-width: 900px) {
-    grid-template-columns: 20px 1.5fr repeat(2, 1fr);
-    & :nth-child(3) {
+    grid-template-columns: 20px 1.5fr repeat(3, 1fr);
+    & :nth-child(4) {
       display: none;
     }
   }
 
   @media screen and (max-width: 500px) {
-    grid-template-columns: 20px 1.5fr repeat(1, 1fr);
-    & :nth-child(5) {
+    grid-template-columns: 20px 1.5fr repeat(2, 1fr);
+    & :nth-child(6) {
       display: none;
     }
   }
@@ -59,6 +60,28 @@ const SORT_FIELD = {
   volumeUSD: 'volumeUSD',
   tvlUSD: 'tvlUSD',
   volumeUSDWeek: 'volumeUSDWeek',
+  appleFarmAPR: 'appleFarmAPR',
+}
+
+const AppleStyledLogo = styled(TokenLogo)<{ size: string }>`
+  width: ${({ size }) => size};
+  height: ${({ size }) => size};
+  border-radius: ${({ size }) => size};
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
+  background-color: #faf9fa;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+const appleFarmRaw = (poolData: PoolData) => {
+  if (!poolData.appleFarmAPR) return <Text fontWeight={400}>-</Text>
+  return (
+    <RowFixed>
+      <Text mr="8px" fontWeight={400}>
+        {poolData.appleFarmAPR.toFixed(2)}%
+      </Text>
+      <AppleStyledLogo size="16px" srcs={[`${ASSET_CDN}/apple_farm/appleSquare.svg`]} alt="token logo" useFilledIcon />
+    </RowFixed>
+  )
 }
 
 const DataRow = ({ poolData, index, chainPath }: { poolData: PoolData; index: number; chainPath: string }) => {
@@ -86,6 +109,7 @@ const DataRow = ({ poolData, index, chainPath }: { poolData: PoolData; index: nu
             </GreyBadge>
           </RowFixed>
         </Text>
+        {appleFarmRaw(poolData)}
         <Text fontWeight={400}>{formatDollarAmount(poolData.tvlUSD)}</Text>
         <Text fontWeight={400}>{formatDollarAmount(poolData.volumeUSD)}</Text>
         <Text fontWeight={400}>{formatDollarAmount(poolData.volumeUSDWeek)}</Text>
@@ -101,6 +125,46 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
 
   const { t } = useTranslation()
 
+  // AppleFarm APR
+  const [appleFarmData, setAppleFarmData] = useState<any[]>([])
+
+  useEffect(() => {
+    const fetchAppleFarmData = async () => {
+      try {
+        const response = await fetch(
+          'https://api.merkl.xyz/v4/opportunities/?name=IguanaDEX&campaignId=&chainId=42793&test=true&status=LIVE',
+        )
+        const data = await response.json()
+
+        setAppleFarmData(data)
+      } catch (error) {
+        console.error('Error fetching appleFarm data:', error)
+      }
+    }
+
+    fetchAppleFarmData()
+  }, [])
+
+  // Enrich pool data with appleFarm APR
+  const enrichedPoolDatas = useMemo(() => {
+    if (!poolDatas || !appleFarmData) return poolDatas
+
+    return poolDatas.map((pool) => {
+      // Find the matching farm in appleFarmData
+      const matchingFarm = appleFarmData.find((farm) => {
+        const token0Match = farm.tokens.some((token) => token.address.toLowerCase() === pool.token0.address)
+        const token1Match = farm.tokens.some((token) => token.address.toLowerCase() === pool.token1.address)
+        const tierMatch = farm.name.includes(`${pool.feeTier / 10000}%`) // Match the tier
+        return token0Match && token1Match && tierMatch
+      })
+
+      return {
+        ...pool,
+        appleFarmAPR: matchingFarm?.apr || null, // Add the APR if a match is found
+      }
+    })
+  }, [poolDatas, appleFarmData])
+
   // for sorting
   const [sortField, setSortField] = useState(SORT_FIELD.tvlUSD)
   const [sortDirection, setSortDirection] = useState<boolean>(true)
@@ -111,15 +175,15 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
   const [maxPage, setMaxPage] = useState(1)
   useEffect(() => {
     let extraPages = 1
-    if (poolDatas.length % maxItems === 0) {
+    if (enrichedPoolDatas.length % maxItems === 0) {
       extraPages = 0
     }
-    setMaxPage(Math.floor(poolDatas.length / maxItems) + extraPages)
-  }, [maxItems, poolDatas])
+    setMaxPage(Math.floor(enrichedPoolDatas.length / maxItems) + extraPages)
+  }, [maxItems, enrichedPoolDatas])
 
   const sortedPools = useMemo(() => {
-    return poolDatas
-      ? poolDatas
+    return enrichedPoolDatas
+      ? enrichedPoolDatas
           .filter((x) => !!x && chainId && !POOL_HIDE?.[chainId]?.includes(x.address))
           .sort((a, b) => {
             if (a && b) {
@@ -131,7 +195,7 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
           })
           .slice(maxItems * (page - 1), page * maxItems)
       : []
-  }, [chainId, maxItems, page, poolDatas, sortDirection, sortField])
+  }, [chainId, maxItems, page, enrichedPoolDatas, sortDirection, sortField])
 
   const handleSort = useCallback(
     (newField: string) => {
@@ -144,7 +208,7 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
 
   const getSortFieldClassName = useSortFieldClassName(sortField, sortDirection)
 
-  if (!poolDatas) {
+  if (!enrichedPoolDatas) {
     return <Loader />
   }
 
@@ -161,6 +225,17 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
                 variant="subtle"
                 onClick={() => handleSort(SORT_FIELD.feeTier)}
                 className={getSortFieldClassName(SORT_FIELD.feeTier)}
+              >
+                <SortArrowIcon />
+              </SortButton>
+            </ClickableColumnHeader>
+            <ClickableColumnHeader color="secondary">
+              Apple APR
+              <SortButton
+                scale="sm"
+                variant="subtle"
+                onClick={() => handleSort(SORT_FIELD.appleFarmAPR)}
+                className={getSortFieldClassName(SORT_FIELD.appleFarmAPR)}
               >
                 <SortArrowIcon />
               </SortButton>
