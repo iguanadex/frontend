@@ -28,6 +28,7 @@ import { styled } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
 import { formatAmount } from 'utils/formatInfoNumbers'
 
+import { ASSET_CDN } from 'config/constants/endpoints'
 import { getTokenSymbolAlias } from 'utils/getTokenAlias'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'views/Info/components/CurrencyLogo'
 import BarChart from '../components/BarChart/alt'
@@ -147,6 +148,35 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
     return [`${s0} / ${s1}`, s0, s1]
   }, [chainId, poolData?.token0.address, poolData?.token0.symbol, poolData?.token1.address, poolData?.token1.symbol])
 
+  const [appleFarmAPR, setAppleFarmAPR] = useState<number | null>(null)
+
+  useEffect(() => {
+    const fetchAppleFarmData = async () => {
+      try {
+        const response = await fetch(
+          'https://api.merkl.xyz/v4/opportunities/?name=IguanaDEX&campaignId=&chainId=42793&test=true&status=LIVE',
+        )
+        const data = await response.json()
+
+        // Determine if appleFarmAPR should be displayed
+        const matchingFarm = data.find((farm) => {
+          const token0Match = farm.tokens.some((token) => token.address.toLowerCase() === poolData?.token0.address)
+          const token1Match = farm.tokens.some((token) => token.address.toLowerCase() === poolData?.token1.address)
+          const tierMatch = farm.name.includes(`${poolData!.feeTier / 10000}%`) // Match the tier
+          return token0Match && token1Match && tierMatch
+        })
+
+        setAppleFarmAPR(matchingFarm?.apr || null)
+      } catch (error) {
+        console.error('Error fetching appleFarm data:', error)
+      }
+    }
+
+    if (poolData) {
+      fetchAppleFarmData()
+    }
+  }, [poolData])
+
   return (
     <Page>
       {poolData ? (
@@ -195,6 +225,18 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
                   {feeTierPercent(poolData.feeTier)}
                 </GreyBadge>
               </Text>
+              {appleFarmAPR !== null && (
+                <RowFixed as="a" href="https://app.applefarm.xyz" target="_blank" ml="16px">
+                  <Text lineHeight={1} fontSize="24px" mr="8px">
+                    {appleFarmAPR.toFixed(2)}%
+                  </Text>
+                  <img
+                    src={`${ASSET_CDN}/apple_farm/appleSquare.svg`}
+                    alt="apple logo"
+                    style={{ width: '42px', height: '42px' }}
+                  />
+                </RowFixed>
+              )}
             </Flex>
             <Flex justifyContent="space-between" flexDirection={['column', 'column', 'column', 'row']}>
               <Flex flexDirection={['column', 'column', 'row']} mb={['8px', '8px', null]}>

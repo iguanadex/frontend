@@ -142,6 +142,9 @@ export interface PoolData {
 
   // 24h fees
   feeUSD
+
+  // AppleFarm APR
+  appleFarmAPR?: number
 }
 
 export interface GenericChartEntry {
