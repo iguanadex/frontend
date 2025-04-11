@@ -59,4 +59,12 @@ export const etherlinkTokens = {
     'Sugarverse',
     'https://www.sugarverse.io/',
   ),
+  lyzi: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x19418d0af0F36865cDfbB2437dFEd29BA34d3190',
+    6,
+    'LYZI',
+    'Lyzi',
+    'https://lyzi.io/',
+  ),
 }

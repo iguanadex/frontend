@@ -15,7 +15,7 @@ Here are the steps to add a token on IguanaDEX:
 1. Add the logo of the token by opening a PR on the [assets](https://github.com/iguanadex/assets) repo in the `asset/` folder. The name of the asset should be the address of the token on Etherlink.
    Note: the address of the token needs to be using the **checksum (not in full lower case)** and the only type of image supported for now is `.png`.
 2. Add the token on the frontend by opening a PR on the [frontend](https://github.com/iguanadex/frontend) repo. You need to:
-   - add the token information in `/packages/tokens/src/etherlink.ts` following this format
+   - add the token information in `/packages/tokens/src/constants/etherlink.ts` following this format
    ```
    name: new ERC20Token(
        ChainId.ETHERLINK,
