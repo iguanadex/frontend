@@ -689,6 +689,14 @@
       "chainId": 42793,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x6b43732a9AE9F8654d496c0A075Aa4Aa43057A0B.png"
+    },
+    {
+      "name": "Lyzi",
+      "symbol": "LYZI",
+      "address": "0x19418d0af0F36865cDfbB2437dFEd29BA34d3190",
+      "chainId": 42793,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x19418d0af0F36865cDfbB2437dFEd29BA34d3190.png"
     }
   ]
 }
