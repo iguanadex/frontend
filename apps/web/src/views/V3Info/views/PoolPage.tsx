@@ -162,7 +162,11 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
         const matchingFarm = data.find((farm) => {
           const token0Match = farm.tokens.some((token) => token.address.toLowerCase() === poolData?.token0.address)
           const token1Match = farm.tokens.some((token) => token.address.toLowerCase() === poolData?.token1.address)
-          const tierMatch = farm.name.includes(`${poolData!.feeTier / 10000}%`) // Match the tier
+          const farmNameParts = farm.name.split(' ')
+          const farmFee = farmNameParts[farmNameParts.length - 1]
+          const poolFee = `${(poolData?.feeTier ?? 0) / 10000}%`
+          const tierMatch = farmFee === poolFee
+
           return token0Match && token1Match && tierMatch
         })
 

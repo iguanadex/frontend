@@ -68,7 +68,6 @@ const AppleStyledLogo = styled(TokenLogo)<{ size: string }>`
   height: ${({ size }) => size};
   border-radius: ${({ size }) => size};
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
-  background-color: #faf9fa;
   color: ${({ theme }) => theme.colors.text};
 `
 
@@ -154,7 +153,11 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
       const matchingFarm = appleFarmData.find((farm) => {
         const token0Match = farm.tokens.some((token) => token.address.toLowerCase() === pool.token0.address)
         const token1Match = farm.tokens.some((token) => token.address.toLowerCase() === pool.token1.address)
-        const tierMatch = farm.name.includes(`${pool.feeTier / 10000}%`) // Match the tier
+        const farmNameParts = farm.name.split(' ')
+        const farmFee = farmNameParts[farmNameParts.length - 1]
+        const poolFee = `${pool.feeTier / 10000}%`
+        const tierMatch = farmFee === poolFee
+
         return token0Match && token1Match && tierMatch
       })
 
