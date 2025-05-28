@@ -67,4 +67,12 @@ export const etherlinkTokens = {
     'Lyzi',
     'https://lyzi.io/',
   ),
+  stxtz: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854',
+    6,
+    'stXTZ',
+    'Staked XTZ',
+    'https://stacy.fi/',
+  ),
 }

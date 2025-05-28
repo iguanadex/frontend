@@ -697,6 +697,14 @@
       "chainId": 42793,
       "decimals": 6,
       "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x19418d0af0F36865cDfbB2437dFEd29BA34d3190.png"
+    },
+    {
+      "name": "Staked XTZ",
+      "symbol": "stXTZ",
+      "address": "0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854",
+      "chainId": 42793,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x01F07f4d78d47A64F4C3B2b65f513f15Be6E1854.png"
     }
   ]
 }
