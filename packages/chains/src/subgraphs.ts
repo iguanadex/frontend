@@ -20,6 +20,9 @@ export const BLOCKS_SUBGRAPHS = getBlocksSubgraphs(publicSubgraphParams)
 export const STABLESWAP_SUBGRAPHS = {
   [ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap',
   [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap-arb',
+  [ChainId.ETHERLINK]:
+    `https://gateway.thegraph.com/api/${publicSubgraphParams.etherlinkApiKey}/subgraphs/id/` +
+    'JHAAFivNjUrzwh6Svqy2rzxncb9VEkfC42F1vvtnZdX',
 }
 
 export function getV3Subgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphParams) {

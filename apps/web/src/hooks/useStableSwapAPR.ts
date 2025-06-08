@@ -9,7 +9,7 @@ export const useStableSwapAPR = (address: string | undefined): number | undefine
   const chainName = useGetChainName()
   const { data } = useQuery<BigNumber>({
     queryKey: [`info/pool/stableAPR/${address}/`, chainName],
-    queryFn: () => getAprsForStableFarm(address),
+    queryFn: () => getAprsForStableFarm(chainName!, address),
     enabled: Boolean(address),
     refetchInterval: refreshIntervalForInfo,
     refetchOnMount: false,

@@ -360,8 +360,8 @@ export const useChainIdByQuery = () => {
   return chainId
 }
 
-const stableSwapAPRWithAddressesFetcher = async (addresses: string[]) => {
-  return Promise.all(addresses.map((d) => getAprsForStableFarm(d)))
+const stableSwapAPRWithAddressesFetcher = async (addresses: string[], chainName: MultiChainName) => {
+  return Promise.all(addresses.map((d) => getAprsForStableFarm(chainName, d)))
 }
 
 export const useStableSwapTopPoolsAPR = (addresses: string[]): Record<string, number> => {
@@ -369,7 +369,7 @@ export const useStableSwapTopPoolsAPR = (addresses: string[]): Record<string, nu
   const chainName = useChainNameByQuery()
   const { data } = useQuery<BigNumber[]>({
     queryKey: [`info/pool/stableAPRs/Addresses/`, chainName],
-    queryFn: () => stableSwapAPRWithAddressesFetcher(addresses),
+    queryFn: () => stableSwapAPRWithAddressesFetcher(addresses, chainName),
     enabled: Boolean(isStableSwap && addresses?.length > 0),
     ...QUERY_SETTINGS_IMMUTABLE,
     ...QUERY_SETTINGS_WITHOUT_INTERVAL_REFETCH,
