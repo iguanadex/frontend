@@ -1,7 +1,7 @@
+import { ChainId, getLlamaChainName } from '@pancakeswap/chains'
 import { gql } from 'graphql-request'
 import orderBy from 'lodash/orderBy'
 import { multiChainBlocksClient, multiChainName, MultiChainNameExtend } from 'state/info/constant'
-import { ChainId, getLlamaChainName } from '@pancakeswap/chains'
 import { Block } from 'state/info/types'
 import { multiQuery } from 'views/Info/utils/infoQueryHelpers'
 
@@ -25,13 +25,13 @@ const blocksQueryConstructor = (subqueries: string[]) => {
  * @param {Array} timestamps
  * @param sortDirection The direction to sort the retrieved blocks. Defaults to 'desc'
  * @param skipCount How many subqueries to fire at a time
- * @param chainName The name of the blockchain to retrieve blocks from. Defaults to 'BSC'
+ * @param chainName The name of the blockchain to retrieve blocks from. Defaults to 'ETHERLINK'
  */
 export const getBlocksFromTimestamps = async (
   timestamps: number[],
   sortDirection: 'asc' | 'desc' | undefined = 'desc',
   skipCount: number | undefined = 500,
-  chainName: MultiChainNameExtend | undefined = 'BSC',
+  chainName: MultiChainNameExtend | undefined = 'ETHERLINK',
 ): Promise<Block[]> => {
   if (timestamps?.length === 0) {
     return []

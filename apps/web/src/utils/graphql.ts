@@ -72,6 +72,7 @@ export const v2Clients = {
 export const infoStableSwapClients = {
   [ChainId.BSC]: new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.BSC]),
   [ChainId.ARBITRUM_ONE]: new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.ARBITRUM_ONE]),
+  [ChainId.ETHERLINK]: new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.ETHERLINK]),
 }
 
 export const infoServerClient = new GraphQLClient(INFO_CLIENT, {
@@ -81,7 +82,10 @@ export const infoServerClient = new GraphQLClient(INFO_CLIENT, {
   },
 })
 
-export const stableSwapClient = new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.BSC])
+export const stableSwapClients = {
+  BSC: new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.BSC]),
+  ETHERLINK: new GraphQLClient(STABLESWAP_SUBGRAPHS[ChainId.ETHERLINK]),
+}
 
 export const bitQueryServerClient = new GraphQLClient(BIT_QUERY, {
   headers: {

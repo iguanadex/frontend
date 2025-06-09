@@ -3,6 +3,7 @@ import { useHttpLocations } from '@pancakeswap/hooks'
 import { Currency } from '@pancakeswap/sdk'
 import { WrappedTokenInfo } from '@pancakeswap/token-lists'
 import { BinanceIcon, TokenLogo } from '@pancakeswap/uikit'
+import { getImageUrlFromToken } from 'components/TokenImage'
 import { ASSET_CDN, PANCAKE_ASSET_CDN } from 'config/constants/endpoints'
 import { useMemo } from 'react'
 import { styled } from 'styled-components'
@@ -72,6 +73,10 @@ export default function CurrencyLogo({ currency, size = '24px', style }: LogoPro
         style={style}
       />
     )
+  }
+
+  if (currency?.chainId === ChainId.ETHERLINK && currency?.isToken) {
+    srcs.push(getImageUrlFromToken(currency))
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
