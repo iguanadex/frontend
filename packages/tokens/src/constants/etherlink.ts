@@ -75,4 +75,13 @@ export const etherlinkTokens = {
     'Staked XTZ',
     'https://stacy.fi/',
   ),
+  lbtc: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0xecAc9C5F704e954931349Da37F60E39f515c11c1',
+    8,
+    'LBTC',
+    'LBTC',
+    'Lombard Staked BTC',
+    'https://www.lombard.finance/app/stake/',
+  ),
 }
