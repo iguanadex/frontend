@@ -63,7 +63,7 @@ export const SUBGRAPH_START_BLOCK = {
   [ChainId.LINEA]: 1444,
   [ChainId.BASE]: 2912007,
   [ChainId.OPBNB]: 1721753,
-  [ChainId.ETHERLINK]: 18915810,
+  [ChainId.ETHERLINK]: 19249903,
   [ChainId.ETHERLINK_TESTNET]: 4190090,
 }
 
