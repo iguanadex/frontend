@@ -13,6 +13,16 @@ export const pools: StableSwapPool[] = [
     stableLpFee: 0.0001,
     stableLpFeeRateOfTotalFee: 0.5,
   },
+  {
+    lpSymbol: 'LBTC-WBTC LP',
+    lpAddress: '0x80Cf929f8f3cf0648D9F44a8d948132a5883a4dF',
+    token: etherlinkTokens.lbtc,
+    quoteToken: etherlinkTokens.wbtc,
+    stableSwapAddress: '0xF0cDE65d6899b13d20508FD071B331A86B57a13d',
+    infoStableSwapAddress: '0x2Cf3967DA565E7C83676d326bE1f316CE7077507',
+    stableLpFee: 0.0001,
+    stableLpFeeRateOfTotalFee: 0.5,
+  },
   // {
   //   lpSymbol: 'USDC-mBASIS LP',
   //   lpAddress: '0x1A2329546f11e4fE55b853D98Bba2c4678E3105A',
