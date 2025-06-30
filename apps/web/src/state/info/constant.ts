@@ -162,7 +162,7 @@ export const multiChainQueryStableClient = {
 
 export const STABLESWAP_SUBGRAPHS_START_BLOCK = {
   ARB: 169319653,
-  ETHERLINK: 19249903,
+  ETHERLINK: 16789352,
 }
 
 export const multiChainScan: Record<MultiChainName, string> = {
