@@ -20,7 +20,7 @@ export const BLOCKS_SUBGRAPHS = getBlocksSubgraphs(publicSubgraphParams)
 export const STABLESWAP_SUBGRAPHS = {
   [ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap',
   [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap-arb',
-  [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/stableswap-etherlink/1.0.0/gn`,
+  [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/stableswap-etherlink/prod/gn`,
 }
 
 export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
@@ -48,7 +48,7 @@ export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
     [ChainId.BASE_SEPOLIA]: null,
     [ChainId.ETHERLINK_TESTNET]:
       'https://api.studio.thegraph.com/query/107385/exchange-v3-etherlink-test/version/latest',
-    [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/exchange-v3-etherlink/1.0.0/gn`,
+    [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/exchange-v3-etherlink/prod/gn`,
   } satisfies Record<ChainId, string | null>
 }
 
