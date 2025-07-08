@@ -23,7 +23,7 @@ export const STABLESWAP_SUBGRAPHS = {
   [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/stableswap-etherlink/1.0.0/gn`,
 }
 
-export function getV3Subgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphParams) {
+export function getV3Subgraphs({ noderealApiKey }: SubgraphParams) {
   return {
     [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-eth',
     [ChainId.GOERLI]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-v3-goerli',
@@ -48,7 +48,7 @@ export function getV3Subgraphs({ noderealApiKey, etherlinkApiKey }: SubgraphPara
     [ChainId.BASE_SEPOLIA]: null,
     [ChainId.ETHERLINK_TESTNET]:
       'https://api.studio.thegraph.com/query/107385/exchange-v3-etherlink-test/version/latest',
-    [ChainId.ETHERLINK]: `https://gateway.thegraph.com/api/${etherlinkApiKey}/subgraphs/id/FWg1DA2HPHRGS1ZTQg1pWiNisVmnXHHHD5znqE529kAf`,
+    [ChainId.ETHERLINK]: `https://api.goldsky.com/api/public/project_cmcbuhqzll9ql01t6083a91go/subgraphs/exchange-v3-etherlink/1.0.0/gn`,
   } satisfies Record<ChainId, string | null>
 }
 
