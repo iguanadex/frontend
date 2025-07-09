@@ -83,4 +83,12 @@ export const etherlinkTokens = {
     'Lombard Staked BTC',
     'https://www.lombard.finance/app/stake/',
   ),
+  sogni: new ERC20Token(
+    ChainId.ETHERLINK,
+    '0x2767Fc1048cd0ae4fd952eeF09853301c9DC7173',
+    18,
+    'SOGNI',
+    'Sogni AI',
+    'https://www.sogni.ai/',
+  ),
 }
