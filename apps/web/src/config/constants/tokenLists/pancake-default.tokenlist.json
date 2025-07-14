@@ -713,6 +713,14 @@
       "chainId": 42793,
       "decimals": 8,
       "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0xecAc9C5F704e954931349Da37F60E39f515c11c1.png"
+    },
+    {
+      "name": "Sogni AI",
+      "symbol": "SOGNI",
+      "address": "0x2767Fc1048cd0ae4fd952eeF09853301c9DC7173",
+      "chainId": 42793,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/IguanaDEX/assets/main/assets/0x2767Fc1048cd0ae4fd952eeF09853301c9DC7173.png"
     }
   ]
 }
